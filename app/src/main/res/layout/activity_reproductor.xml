@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CDDC39"
+    android:background="#A0A0A0"
     tools:context=".ReproductorActivity">
 
     <TextView
@@ -35,15 +35,16 @@
         app:srcCompat="@drawable/musica1" />
 
     <Button
-        android:id="@+id/boton2_reproductor"
+        android:id="@+id/boton1_reproductor"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="24dp"
-        android:backgroundTint="#1878C5"
+        android:backgroundTint="#F3F3F3"
         android:fontFamily="@font/adlam_display"
         android:text="Volver"
+        android:textColor="#48444E"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -58,11 +59,13 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="280dp">
 
+
         <ImageButton
             android:id="@+id/imaboton1_reproductor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="192dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
+
             android:paddingLeft="@dimen/material_emphasis_disabled_background"
             app:srcCompat="@drawable/pausa" />
 
