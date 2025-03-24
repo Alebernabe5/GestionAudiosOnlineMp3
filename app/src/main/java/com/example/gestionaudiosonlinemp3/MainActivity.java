@@ -19,6 +19,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     protected DataBaseSQL gdb;
     protected ArrayList <String> listaAudios = new ArrayList<String>();
     protected ArrayAdapter<String> adaptador;
+    protected String contenidoItem = "";
+    protected String[] partes;
+
 
 
     @Override
@@ -60,11 +64,21 @@ public class MainActivity extends AppCompatActivity {
         listaAudios = gdb.obtenerAudio();
         adaptador.addAll(listaAudios);
         adaptador.notifyDataSetChanged();
-        
+
         lista1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this, "Cortito", Toast.LENGTH_SHORT).show();
+
+                contenidoItem = adapterView.getItemAtPosition(i).toString();
+
+                partes = contenidoItem.split("-.");
+
+                pasarPantalla = new Intent(MainActivity.this, ReproduccionActivity.class);
+                pasarPantalla.putExtra("ID",partes[0]);
+                pasarPantalla.putExtra("NAME",partes[1]);
+                pasarPantalla.putExtra("URL",partes[2]);
+                startActivity(pasarPantalla);
+
             }
         });
 

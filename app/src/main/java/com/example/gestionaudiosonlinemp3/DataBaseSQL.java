@@ -74,7 +74,7 @@ public class DataBaseSQL extends SQLiteOpenHelper {
     {
         ArrayList<String> audios= new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase(); //Referencia a la BBDD
-        Cursor cur = db.rawQuery("SELECT id,titulo FROM media",null);
+        Cursor cur = db.rawQuery("SELECT * FROM media",null);
 
         if (cur!=null)
         {
@@ -82,7 +82,8 @@ public class DataBaseSQL extends SQLiteOpenHelper {
             while(!cur.isAfterLast())
             {
                 //Codigo donde obtengo la informacion
-                audios.add(cur.getString(0)+"."+ cur.getString(1));
+                audios.add(cur.getString(0)+"-."+ cur.getString(1)+"-."+ cur.getString(2));
+
                 cur.moveToNext();
             }
         }
@@ -105,6 +106,8 @@ public class DataBaseSQL extends SQLiteOpenHelper {
         }
         return false;
     }
+
+
     /*
 
     //EXISTE ID AUDIO
