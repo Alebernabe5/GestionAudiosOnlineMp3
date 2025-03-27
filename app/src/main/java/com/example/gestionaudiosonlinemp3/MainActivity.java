@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,13 +25,14 @@ import java.util.HashMap;
 public class MainActivity extends AppCompatActivity {
 
     protected TextView texto1;
+    protected Button boton1;
     protected ListView lista1;
     protected Intent pasarPantalla;
     protected DataBaseSQL gdb;
     protected ArrayList <String> listaAudios = new ArrayList<String>();
+    protected ArrayList <InfoAudio> listaInfoAudios = new ArrayList<InfoAudio>();
     protected ArrayAdapter<String> adaptador;
-    protected String contenidoItem = "";
-    protected String[] partes;
+   
 
 
 
@@ -48,42 +50,52 @@ public class MainActivity extends AppCompatActivity {
         gdb = new DataBaseSQL(this); //Aqui es donde se crea y conecta la BD
 
         texto1 = (TextView) findViewById(R.id.texto1_main);
+        boton1 = (Button) findViewById(R.id.boton1_main);
         lista1 = (ListView) findViewById(R.id.lista1_main);
 
-        getSupportActionBar().setTitle("Lista de reprodución Audio MP3"); //Cambio de titulo del menu
-
-
+        getSupportActionBar().setTitle(getString(R.string.string_codigoPO)); //Cambio de titulo del menu
 
         //Mostrar la lista de audio en el listView
+        listaInfoAudios = gdb.obtenerInfoAudio();
         listaAudios = gdb.obtenerAudio();
         adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,listaAudios);
         lista1.setAdapter(adaptador);
 
-        //Actualizar la lista tras crear el producto nuevo
-        adaptador.clear();
-        listaAudios = gdb.obtenerAudio();
-        adaptador.addAll(listaAudios);
-        adaptador.notifyDataSetChanged();
-
+        //LISTA
         lista1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                contenidoItem = adapterView.getItemAtPosition(i).toString();
-
-                partes = contenidoItem.split("-.");
+                InfoAudio info= listaInfoAudios.get(i); //Aqui tengo la info del video
 
                 pasarPantalla = new Intent(MainActivity.this, ReproduccionActivity.class);
-                pasarPantalla.putExtra("ID",partes[0]);
-                pasarPantalla.putExtra("NAME",partes[1]);
-                pasarPantalla.putExtra("URL",partes[2]);
+                pasarPantalla.putExtra("ID",info.getId());
+                pasarPantalla.putExtra("NAME",info.getTitulo());
+                pasarPantalla.putExtra("URL",info.getUrl());
+
                 startActivity(pasarPantalla);
 
             }
         });
 
+        //BOTON BORRAR TODAS LAS CANCIONES
+        
+        boton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // gdb.borrarTodosLosAudios();
+                Toast.makeText(MainActivity.this, getString(R.string.string_codigoBorrarTodo), Toast.LENGTH_SHORT).show();
+            }
+        });
 
-
+        //TOCAR LARGO PARA BORRAR UN ITEMS
+        lista1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(MainActivity.this, "He tocado largo", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
         }
     //MENU

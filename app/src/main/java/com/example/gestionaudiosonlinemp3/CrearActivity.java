@@ -56,21 +56,21 @@ public class CrearActivity extends AppCompatActivity {
                 contenidoCaja2 = caja2.getText().toString();
                 if (contenidoCaja1.equalsIgnoreCase("")&& contenidoCaja2.equalsIgnoreCase(""))
                 {
-                    Toast.makeText(CrearActivity.this, "Todos los campos son obligatorios", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CrearActivity.this,  getString(R.string.string_codigoCamposObligatorios), Toast.LENGTH_SHORT).show();
                 }
                 else
                 {
                     caja1.setText("");
                     caja2.setText("");
                     if (gdb.insertarAudio(contenidoCaja1,contenidoCaja2)) {
-                        Toast.makeText(CrearActivity.this, "Audio guardado correctamente", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CrearActivity.this,  getString(R.string.string_codigoGuardadoOk), Toast.LENGTH_SHORT).show();
                         pasarPantalla = new Intent(CrearActivity.this, MainActivity.class);
                         startActivity(pasarPantalla);
 
                     }
                     else
                     {
-                        Toast.makeText(CrearActivity.this, "No se pudo guardar el audio", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(CrearActivity.this, getString(R.string.string_codigoNoGuardado), Toast.LENGTH_SHORT).show();
                     }
                 }
 

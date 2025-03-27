@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">GestionAudiosOnlineMp3</string>
+
+    <!--mainActivity-->
+    <string name="string_texto1_main">PlayList Online</string>
+    <string name="string_codigoPO">Lista de reprodución Audio MP3</string>
+    <string name="string_codigoBorrarTodo">Se han borrado todos los audios</string>
+    <string name="string_boton1_main">BORRAR TODOS LOS AUDIO</string>
+
+
+
+    <!--CrearActivity-->
+    <string name="string_texto1_crear">Añadir Audio Online</string>
+    <string name="string_texto2_crear">Título</string>
+    <string name="string_texto3_crear">Url Video</string>
+    <string name="string_caja1_crear">Introduce el título del audio</string>
+    <string name="string_caja2_crear">Introduce la url del audio</string>
+    <string name="string_boton1_crear">CREAR AUDIO</string>
+    <string name="string_boton2_crear">VOLVER</string>
+
+    <string name="string_codigoCamposObligatorios">Todos los campos son obligatorios</string>
+    <string name="string_codigoGuardadoOk">Audio guardado correctamente</string>
+    <string name="string_codigoNoGuardado">No se pudo guardar el audio</string>
+
+    <!--ReproduccionActivity-->
+    <string name="string_texto1_reproduccion">Reproductor Audio</string>
+    <string name="string_texto2_reproduccion">Título:</string>
+    <string name="string_texto3_reproduccion">Url:</string>
+
+
+    <string name="string_boton1_reproduccion">VOLVER</string>
+    
+    <string name="string_codigoRA">Reproductor Audio MP3: </string>
+
 </resources>

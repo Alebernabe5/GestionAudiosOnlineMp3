@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">GestionAudiosOnlineMp3</string>
+
+    <!--mainActivity-->
+    <string name="string_texto1_main">Llista de reproducció en línia</string>
+    <string name="string_codigoPO">Llista de reproducció d àudio MP3</string>
+
+    <!--CrearActivity-->
+    <string name="string_texto1_crear">Afegir àudio en línia</string>
+    <string name="string_texto2_crear">Títol</string>
+    <string name="string_texto3_crear">URL del vídeo</string>
+    <string name="string_caja1_crear">Introdueix el títol de l àudio</string>
+    <string name="string_caja2_crear">Introdueix la URL de l àudio</string>
+    <string name="string_boton1_crear">CREAR ÀUDIO</string>
+    <string name="string_boton2_crear">TORNAR</string>
+
+    <string name="string_codigoCamposObligatorios">Tots els camps són obligatoris</string>
+    <string name="string_codigoGuardadoOk">Àudio desat correctament</string>
+    <string name="string_codigoNoGuardado">No s ha pogut desar l àudio</string>
+
+    <!--ReproduccionActivity-->
+    <string name="string_texto1_reproduccion">Reproductor d àudio</string>
+    <string name="string_texto2_reproduccion">Títol:</string>
+    <string name="string_texto3_reproduccion">URL:</string>
+
+    <string name="string_boton1_reproduccion">TORNAR</string>
+
+    <string name="string_codigoRA">Reproductor d audio MP3: </string>
+
+
+</resources>

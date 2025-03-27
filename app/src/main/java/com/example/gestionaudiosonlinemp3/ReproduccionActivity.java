@@ -41,13 +41,13 @@ public class ReproduccionActivity extends AppCompatActivity {
             return insets;
         });
 
-        texto1 = (TextView) findViewById(R.id.texto1_reproducion);
-        texto2 = (TextView) findViewById(R.id.texto2_reproducion);
-        texto3 = (TextView) findViewById(R.id.texto3_reproducion);
-        imaBoton1Pause = (ImageButton) findViewById(R.id.imaBoton1_reproducion);
-        imaBoton2Play = (ImageButton) findViewById(R.id.imaBoton2_reproducion);
-        imaBoton3Stop = (ImageButton) findViewById(R.id.imaBoton3_reproducion);
-        boton1 = (Button) findViewById(R.id.boton1_reproducion);
+        texto1 = (TextView) findViewById(R.id.texto1_reproduccion);
+        texto2 = (TextView) findViewById(R.id.texto2_reproduccion);
+        texto3 = (TextView) findViewById(R.id.texto3_reproduccion);
+        imaBoton1Pause = (ImageButton) findViewById(R.id.imaBoton1_reproduccion);
+        imaBoton2Play = (ImageButton) findViewById(R.id.imaBoton2_reproduccion);
+        imaBoton3Stop = (ImageButton) findViewById(R.id.imaBoton3_reproduccion);
+        boton1 = (Button) findViewById(R.id.boton1_reproduccion);
 
 
 
@@ -56,9 +56,8 @@ public class ReproduccionActivity extends AppCompatActivity {
         {
             paqueteNombre = extras.getString("NAME");
             paqueteUrl = extras.getString("URL");
-            Toast.makeText(this, "este es el nombre " +paqueteNombre, Toast.LENGTH_SHORT).show();
-            texto2.setText("Título: "+paqueteNombre);
-            texto3.setText("Url: "+paqueteUrl);
+            texto2.setText(getString(R.string.string_texto2_reproduccion)+" "+paqueteNombre);
+            texto3.setText(getString(R.string.string_texto3_reproduccion)+" "+paqueteUrl);
         }
 
         //BOTON PAUSE
@@ -93,6 +92,7 @@ public class ReproduccionActivity extends AppCompatActivity {
                 } else
                 {
                     try {
+
                         mp = new MediaPlayer(); //Instanciar mp
                         mp.setDataSource(paqueteUrl);
                         mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
@@ -106,6 +106,7 @@ public class ReproduccionActivity extends AppCompatActivity {
 
 
                     } catch (IOException e) {
+                        Toast.makeText(ReproduccionActivity.this, "Imposible reproducir el audio", Toast.LENGTH_SHORT).show();
                         throw new RuntimeException(e);
 
                     }
@@ -132,7 +133,7 @@ public class ReproduccionActivity extends AppCompatActivity {
             }
         });
 
-        getSupportActionBar().setTitle("Reproductor Audio MP3: (" +paqueteNombre+")"); //Cambio de titulo del menu
+       getSupportActionBar().setTitle(getString(R.string.string_codigoRA)+" ("+ paqueteNombre+")"); //Cambio de titulo del menu
 
     }
 }

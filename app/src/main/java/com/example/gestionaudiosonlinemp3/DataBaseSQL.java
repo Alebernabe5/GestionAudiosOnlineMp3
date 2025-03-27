@@ -44,15 +44,30 @@ public class DataBaseSQL extends SQLiteOpenHelper {
         return true;
     }
     */
-/*
+
     //BORRAR TODAS LOS AUDIOS
-    public void borrarTodosLosNota ()
+    public void borrarTodosLosAudios ()
     {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("DELETE FROM notas WHERE id>=0");
+        db.execSQL("DELETE FROM media WHERE id>=0");
 
     }
-*/
+
+//EXISTE AUDIO
+public boolean existeAudio(String titulo)
+{
+    SQLiteDatabase db = this.getReadableDatabase(); //Referencia a la BBDD
+    Cursor cur = db.rawQuery("SELECT * FROM media WHERE titulo='"+titulo+"'",null);
+
+    if (cur!=null)
+    {
+        cur.moveToLast(); //Me pongo en primera posic
+        if (cur.getCount()>0) {
+            return true;
+        }
+    }
+    return false;
+}
 
     //INSERTAR AUDIO
     public boolean insertarAudio (String titulo, String url)
@@ -69,63 +84,63 @@ public class DataBaseSQL extends SQLiteOpenHelper {
 
 
 
-    //OBTENER AUDIO
-    public ArrayList<String> obtenerAudio()
+    //OBTENER INFOAUDIO
+    public ArrayList<InfoAudio> obtenerInfoAudio()
     {
-        ArrayList<String> audios= new ArrayList<String>();
+        ArrayList <InfoAudio> salidaInfo = new ArrayList<InfoAudio>();
         SQLiteDatabase db = this.getReadableDatabase(); //Referencia a la BBDD
         Cursor cur = db.rawQuery("SELECT * FROM media",null);
-
         if (cur!=null)
         {
-            cur.moveToFirst(); //Me pongo en primera posic
-            while(!cur.isAfterLast())
+            cur.moveToLast();
+            if (cur.getCount()>0)
             {
-                //Codigo donde obtengo la informacion
-                audios.add(cur.getString(0)+"-."+ cur.getString(1)+"-."+ cur.getString(2));
-
-                cur.moveToNext();
+                cur.moveToFirst();
+                while(!cur.isAfterLast())
+                {
+                    //Obtengo el valor de cada campo
+                    int id = cur.getInt(0);
+                    String titulo = cur.getString(1);
+                    String url = cur.getString(2);
+                    //Creo el obj infoVideo
+                    InfoAudio info = new InfoAudio(id, titulo, url);
+                    salidaInfo.add(info); //meto el objeto en el array
+                    cur.moveToNext();
+                }
             }
+
         }
-        return audios;
+        return  salidaInfo;
     }
 
-
-    //EXISTE AUDIO
-    public boolean existeAudio(String titulo)
+    //OBTENER INFOAUDIO
+    public ArrayList<String> obtenerAudio()
     {
+        ArrayList <String> salidaInfo = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase(); //Referencia a la BBDD
-        Cursor cur = db.rawQuery("SELECT * FROM media WHERE titulo='"+titulo+"'",null);
-
+        Cursor cur = db.rawQuery("SELECT * FROM media",null);
         if (cur!=null)
         {
-            cur.moveToLast(); //Me pongo en primera posic
-            if (cur.getCount()>0) {
-                return true;
+            cur.moveToLast();
+            if (cur.getCount()>0)
+            {
+                cur.moveToFirst();
+                while(!cur.isAfterLast())
+                {
+                    //Obtengo el valor de cada campo
+                    int id = cur.getInt(0);
+                    String titulo = cur.getString(1);
+                    String url = cur.getString(2);
+
+                    salidaInfo.add(id + ". " +titulo); //meto el objeto en el array
+                    cur.moveToNext();
+                }
             }
+
         }
-        return false;
+        return  salidaInfo;
     }
 
-
-    /*
-
-    //EXISTE ID AUDIO
-
-    public boolean existeIdAudio(String id)
-    {
-        SQLiteDatabase db = this.getReadableDatabase(); //Referencia a la BBDD
-        Cursor cur = db.rawQuery("SELECT * FROM notas WHERE id='"+id+"'",null);
-
-        if (cur!=null)
-        {
-            cur.moveToLast(); //Me pongo en primera posic
-            if (cur.getCount()>0) {
-                return true;
-            }
-        }
-        return false;
-    }*/
 
 
 
