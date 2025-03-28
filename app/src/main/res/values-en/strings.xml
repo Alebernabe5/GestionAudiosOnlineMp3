@@ -4,6 +4,12 @@
     <!--mainActivity-->
     <string name="string_texto1_main">Online Playlist</string>
     <string name="string_codigoPO">MP3 Audio Playlist</string>
+    <string name="string_codigoPregunta">Do you want to delete the audio?</string>
+    <string name="string_codigoAudioBorrado">Audio deleted successfully</string>
+    <string name="string_codigoAudioNoBorrado">Failed to delete the audio</string>
+    <string name="string_codigoBorrarTodo">All audios have been deleted</string>
+    <string name="string_boton1_main">DELETE ALL AUDIO</string>
+
 
     <!--CrearActivity-->
     <string name="string_texto1_crear">Add Online Audio</string>
@@ -22,6 +28,7 @@
     <string name="string_texto1_reproduccion">Audio Player</string>
     <string name="string_texto2_reproduccion">Title: </string>
     <string name="string_texto3_reproduccion">URL: </string>
+    <string name="string_codigoImposibleReproduccirAudio">Unable to play the audio</string>
 
     <string name="string_boton1_reproduccion">GO BACK</string>
 

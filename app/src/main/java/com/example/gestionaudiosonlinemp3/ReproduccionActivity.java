@@ -67,7 +67,7 @@ public class ReproduccionActivity extends AppCompatActivity {
 
                 miliseg = mp.getCurrentPosition(); //Guarda mil donde se reproduce el audio
                 mp.pause();
-                imaBoton1Pause.setVisibility(View.INVISIBLE);
+                //imaBoton1Pause.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -106,7 +106,7 @@ public class ReproduccionActivity extends AppCompatActivity {
 
 
                     } catch (IOException e) {
-                        Toast.makeText(ReproduccionActivity.this, "Imposible reproducir el audio", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ReproduccionActivity.this, getString(R.string.string_codigoImposibleReproduccirAudio), Toast.LENGTH_SHORT).show();
                         throw new RuntimeException(e);
 
                     }

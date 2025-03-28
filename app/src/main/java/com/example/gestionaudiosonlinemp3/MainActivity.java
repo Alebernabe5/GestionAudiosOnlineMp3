@@ -89,6 +89,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                gdb.borrarTodosLosAudios();
                Toast.makeText(MainActivity.this, getString(R.string.string_codigoBorrarTodo), Toast.LENGTH_SHORT).show();
+                adaptador.clear();
+                listaInfoAudios = gdb.obtenerInfoAudio();
+                listaAudios = gdb.obtenerAudio();
+                adaptador.addAll(listaAudios);
+                adaptador.notifyDataSetChanged();nono
             }
         });
 
@@ -101,14 +106,14 @@ public class MainActivity extends AppCompatActivity {
 
                 //DIALOGO PREGUNTA DE ELIMINACION
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setMessage("¿Deseas eliminar el audio "+partes[1]+"?")
+                builder.setMessage(getString(R.string.string_codigoPregunta)+partes[1]+"?")
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // START THE GAME!
 
                                 if(gdb.borrarAudio(partes[0]))
                                 {
-                                    Toast.makeText(MainActivity.this, "Audio borrado correctamente", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, getString(R.string.string_codigoAudioBorrado), Toast.LENGTH_SHORT).show();
                                     adaptador.clear();
                                     listaInfoAudios = gdb.obtenerInfoAudio();
                                     listaAudios = gdb.obtenerAudio();
@@ -116,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
                                     adaptador.notifyDataSetChanged();
                                 }
                                 else {
-                                    Toast.makeText(MainActivity.this, "No se ha podido borrar el audio", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this,  getString(R.string.string_codigoAudioNoBorrado), Toast.LENGTH_SHORT).show();
 
                                 }
 

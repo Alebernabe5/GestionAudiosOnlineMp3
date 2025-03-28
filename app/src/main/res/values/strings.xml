@@ -4,6 +4,9 @@
     <!--mainActivity-->
     <string name="string_texto1_main">PlayList Online</string>
     <string name="string_codigoPO">Lista de reprodución Audio MP3</string>
+    <string name="string_codigoPregunta">¿Deseas eliminar el audio </string>
+    <string name="string_codigoAudioBorrado">Audio borrado correctamente</string>
+    <string name="string_codigoAudioNoBorrado">No se ha podido borrar el audio</string>
     <string name="string_codigoBorrarTodo">Se han borrado todos los audios</string>
     <string name="string_boton1_main">BORRAR TODOS LOS AUDIO</string>
 
@@ -26,6 +29,7 @@
     <string name="string_texto1_reproduccion">Reproductor Audio</string>
     <string name="string_texto2_reproduccion">Título:</string>
     <string name="string_texto3_reproduccion">Url:</string>
+    <string name="string_codigoImposibleReproduccirAudio">Imposible reproducir el audio</string>
 
 
     <string name="string_boton1_reproduccion">VOLVER</string>

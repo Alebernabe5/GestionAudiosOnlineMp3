@@ -4,6 +4,11 @@
     <!--mainActivity-->
     <string name="string_texto1_main">Llista de reproducció en línia</string>
     <string name="string_codigoPO">Llista de reproducció d àudio MP3</string>
+    <string name="string_codigoPregunta">Vols eliminar l àudio?</string>
+    <string name="string_codigoAudioBorrado">Àudio eliminat correctament</string>
+    <string name="string_codigoAudioNoBorrado">No s ha pogut eliminar l àudio</string>
+    <string name="string_codigoBorrarTodo">S han eliminat tots els àudios</string>
+    <string name="string_boton1_main">ELIMINAR TOTS ELS ÀUDIOS</string>
 
     <!--CrearActivity-->
     <string name="string_texto1_crear">Afegir àudio en línia</string>
@@ -22,6 +27,7 @@
     <string name="string_texto1_reproduccion">Reproductor d àudio</string>
     <string name="string_texto2_reproduccion">Títol:</string>
     <string name="string_texto3_reproduccion">URL:</string>
+    <string name="string_codigoImposibleReproduccirAudio">Impossible reproduir l àudio</string>
 
     <string name="string_boton1_reproduccion">TORNAR</string>
 
