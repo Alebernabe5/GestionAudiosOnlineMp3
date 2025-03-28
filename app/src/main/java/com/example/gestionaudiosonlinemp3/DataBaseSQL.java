@@ -21,16 +21,16 @@ public class DataBaseSQL extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE media (id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, url TEXT)"); //Consulta crear tabla media
 
         //Ejecuciones de muestra para tener en BBDD
-        db.execSQL("INSERT INTO media VALUES(null,'Gorila','https://cdn.pixabay.com/download/audio/2025/03/19/audio_56ae1dae5f.mp3?filename=gorila-315977.mp3')");
-        db.execSQL("INSERT INTO media VALUES(null,'AMALGAM','https://cdn.pixabay.com/download/audio/2024/06/14/audio_0e2636099d.mp3?filename=amalgam-217007.mp3')");
-        db.execSQL("INSERT INTO media VALUES(null,'Summer Walk','https://cdn.pixabay.com/download/audio/2023/06/06/audio_cbcfcb18e6.mp3?filename=summer-walk-152722.mp3')");
+        //db.execSQL("INSERT INTO media VALUES(null,'Gorila','https://cdn.pixabay.com/download/audio/2025/03/19/audio_56ae1dae5f.mp3?filename=gorila-315977.mp3')");
+        //db.execSQL("INSERT INTO media VALUES(null,'AMALGAM','https://cdn.pixabay.com/download/audio/2024/06/14/audio_0e2636099d.mp3?filename=amalgam-217007.mp3')");
+        //db.execSQL("INSERT INTO media VALUES(null,'Summer Walk','https://cdn.pixabay.com/download/audio/2023/06/06/audio_cbcfcb18e6.mp3?filename=summer-walk-152722.mp3')");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
-/*
+
     //BORRAR AUDIOS
     public boolean borrarAudio (String id)
     {
@@ -43,7 +43,6 @@ public class DataBaseSQL extends SQLiteOpenHelper {
         }
         return true;
     }
-    */
 
     //BORRAR TODAS LOS AUDIOS
     public void borrarTodosLosAudios ()
@@ -68,6 +67,22 @@ public boolean existeAudio(String titulo)
     }
     return false;
 }
+
+    //EXISTE idAUDIO
+    public boolean existeIdAudio(String id)
+    {
+        SQLiteDatabase db = this.getReadableDatabase(); //Referencia a la BBDD
+        Cursor cur = db.rawQuery("SELECT * FROM media WHERE id='"+id+"'",null);
+
+        if (cur!=null)
+        {
+            cur.moveToLast(); //Me pongo en primera posic
+            if (cur.getCount()>0) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     //INSERTAR AUDIO
     public boolean insertarAudio (String titulo, String url)
@@ -140,8 +155,4 @@ public boolean existeAudio(String titulo)
         }
         return  salidaInfo;
     }
-
-
-
-
 }
