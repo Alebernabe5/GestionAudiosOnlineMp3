@@ -1,5 +1,6 @@
 package com.example.gestionaudiosonlinemp3;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -32,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     protected ArrayList <String> listaAudios = new ArrayList<String>();
     protected ArrayList <InfoAudio> listaInfoAudios = new ArrayList<InfoAudio>();
     protected ArrayAdapter<String> adaptador;
+    protected String contenidoItem = "";
+    protected String[] partes;
    
 
 
@@ -92,7 +96,30 @@ public class MainActivity extends AppCompatActivity {
         lista1.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this, "He tocado largo", Toast.LENGTH_SHORT).show();
+                contenidoItem=adapterView.getItemAtPosition(i).toString();
+                partes=contenidoItem.split("\\.");
+
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("¿Deseas eliminar el audio "+partes[1]+"?")
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // START THE GAME!
+
+                                Toast.makeText(MainActivity.this, "Partes: " +partes[0], Toast.LENGTH_SHORT).show();
+
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // User cancels the dialog.
+                            }
+                        });
+                // Create the AlertDialog object and return it.
+                 builder.create();
+                 builder.show();
+
+
                 return true;
             }
         });
